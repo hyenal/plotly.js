@@ -117,6 +117,13 @@ proto.createMap = function(calcData, fullLayout, resolve, reject) {
         compact: true
     }));
 
+    var scale_control = opt.scalecontrol;
+    if (scale_control) {
+        map.addControl(new mapboxgl.ScaleControl({
+            maxWidth: scale_control.maxwidth,
+            unit: scale_control.unit,
+        });
+    }
 
     // make sure canvas does not inherit left and top css
     map._canvas.style.left = '0px';
