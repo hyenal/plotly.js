@@ -104,6 +104,14 @@ proto.createMap = function(calcData, fullLayout, resolve, reject) {
         compact: true
     }));
 
+    var scale_control = opt.scalecontrol;
+    if (scale_control) {
+        map.addControl(new maplibregl.ScaleControl({
+            maxWidth: scale_control.maxwidth,
+            unit: scale_control.unit,
+        });
+    }
+    
     var requestedIcons = {};
     map.on('styleimagemissing', function(e) {
         var id = e.id;
